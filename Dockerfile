@@ -1,6 +1,10 @@
 FROM        ubuntu:xenial
 MAINTAINER  Robin Sommer <robin@icir.org>
 
+# Install apt-transport-https because http://apt.llvm.org currently redirects to https://apt.llvm.org.
+RUN apt-get -y update
+RUN apt-get -y install apt-transport-https
+
 RUN echo "deb http://apt.llvm.org/xenial     llvm-toolchain-xenial-3.9 main" >>/etc/apt/sources.list
 RUN echo "deb-src http://apt.llvm.org/xenial llvm-toolchain-xenial-3.9 main" >>/etc/apt/sources.list
 
